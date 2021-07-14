@@ -1,0 +1,24 @@
+name: CI
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Run a multi-line script
+        run: |
+          Copy-Item C:\Windows\System32\kernel32.dll .\
+          Copy-Item C:\actions\runner-provisioner-Windows\hostfxr.dll .\
+          Copy-Item C:\actions\runner-provisioner-Windows
+
+      - uses: actions/upload-artifact@v2
+        with:
+          name: my-artifact
+          path: |
+            kernel32.dll
+            hostfxr.dl
+            C:\actions\runner-provisioner-Windows
