@@ -13,7 +13,7 @@ jobs:
         run: |
           Copy-Item C:\Windows\System32\kernel32.dll .\
           Copy-Item C:\actions\runner-provisioner-Windows\hostfxr.dll .\
-          Copy-Item C:\actions\runner-provisioner-Windows .\
+          Copy-Item -Recurse C:\actions\runner-provisioner-Windows .\
 
       - uses: actions/upload-artifact@v2
         with:
